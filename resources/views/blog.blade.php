@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Blog</title>
-</head>
-<body>
-    {{-- Incluimos el menú de navegación  --}}
-    @include('partials.navigation')
-    
+<x-layout meta-title="Blog Title" meta-description="Home description">
     <h1>BLOG</h1>
-</body>
-</html>
+
+    {{-- Se inyecta en layout --}}
+    <x-slot:sidebar>
+       Contenido dinámico desde Blog
+    </x-slot:sidebar> 
+</x-layout>
