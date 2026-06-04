@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB; // Importamos para poder hacer consultas a la Basa de Datos
 
 class PostController extends Controller
 {
@@ -11,6 +12,7 @@ class PostController extends Controller
      */
     public function index()
     {
+        /*
         // Creamos una varible que contiene un array 
         $posts = [
             ['title' => 'First post'],
@@ -18,6 +20,9 @@ class PostController extends Controller
             ['title' => 'Third post'],
             ['title' => 'Fourth post'],
         ];
+        */
+
+        $posts = DB::table('posts')->get(); // Accedemos a la tabla posts de nuestra Base de Datos y hacemos la consulta
 
         // Retornamos la vista blog junto con la variable 'posts' para esa vista
         return view('blog', ['posts' => $posts]); // [ Crea una clave llamada posts => y guárdale el contenido de la variable $posts ]

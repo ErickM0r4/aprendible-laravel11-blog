@@ -11,7 +11,7 @@
     {{-- Usamos la variable que se crea en el controlador /blog ---> 'posts' === $posts --}}
     @foreach ($posts as $post)
         <ul>
-            <li>{{ $post['title'] }}</li>
+            <li>{{ $post->title }}</li>
         </ul>
     @endforeach
 
