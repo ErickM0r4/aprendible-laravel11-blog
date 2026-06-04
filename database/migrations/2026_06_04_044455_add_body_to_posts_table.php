@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table){
-            $table->id();
-            $table->string('title');
+        Schema::table('posts', function (Blueprint $table) {
+            $table->text('body')->after('title')->nullable(); // Agregamos un campo a la tabla posts despues de la columna title y puede ser null
         });
     }
 
@@ -22,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('posts', function (Blueprint $table) {
+            $table->dropColumn('body'); // Quitamos un campo a la tabla posts
+        });
     }
 };
