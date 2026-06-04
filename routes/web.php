@@ -40,21 +40,24 @@ Route::view('/nosotros', 'about')->name('nAbout');
 
 // ------------------------------------------- PARAMETROS EN RUTAS  - GET -----------------------------------------------------------------
 
-// Creamos una varible que contiene un array 
-$posts = [
-   ['title' => 'First post'],
-   ['title' => 'Second post'],
-   ['title' => 'Third post'],
-   ['title' => 'Fourth post'],
-]; 
-
 //          URI    VISTA     NOMBRE RUTA
 Route::view('/', 'welcome')->name('nHome');
 
 Route::view('/contacto', 'contact')->name('nContact');
 
-//            URI    VISTA    DATOS (Opcional)    NOMBRE RUTA
-Route::view('/blog', 'blog', ['posts' => $posts])->name('nBlog');  //  [ Crea una clave llamada posts => y guárdale el contenido de la variable $posts ] de esta forma la variable se pasa a la vista blog.blade.php
+Route::get('/blog', function(){
+   // Creamos una varible que contiene un array 
+   $posts = [
+      ['title' => 'First post'],
+      ['title' => 'Second post'],
+      ['title' => 'Third post'],
+      ['title' => 'Fourth post'],
+   ]; 
+
+   // Retornamos la vista blog junto con la variable 'posts' para esa vista
+   return view('blog', ['posts' => $posts]); // [ Crea una clave llamada posts => y guárdale el contenido de la variable $posts ]
+
+})->name('nBlog'); 
                         
 Route::view('/nosotros', 'about')->name('nAbout');
 
