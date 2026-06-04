@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /* 
@@ -45,19 +46,7 @@ Route::view('/', 'welcome')->name('nHome');
 
 Route::view('/contacto', 'contact')->name('nContact');
 
-Route::get('/blog', function(){
-   // Creamos una varible que contiene un array 
-   $posts = [
-      ['title' => 'First post'],
-      ['title' => 'Second post'],
-      ['title' => 'Third post'],
-      ['title' => 'Fourth post'],
-   ]; 
-
-   // Retornamos la vista blog junto con la variable 'posts' para esa vista
-   return view('blog', ['posts' => $posts]); // [ Crea una clave llamada posts => y guárdale el contenido de la variable $posts ]
-
-})->name('nBlog'); 
+Route::get('/blog', [PostController::class, 'index'])->name('nBlog'); // [controlador, función]
                         
 Route::view('/nosotros', 'about')->name('nAbout');
 
