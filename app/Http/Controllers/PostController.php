@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; // Importamos para poder hacer consultas a la Basa de Datos
 
+use App\Models\Post; // Importamos el Modelo Post
+
 class PostController extends Controller
 {
     /**
@@ -22,7 +24,14 @@ class PostController extends Controller
         ];
         */
 
-        $posts = DB::table('posts')->get(); // Accedemos a la tabla posts de nuestra Base de Datos y hacemos la consulta
+        $posts = Post::get(); // Accedemos a la tabla posts de nuestra Base de Datos por medio del Modelo y hacemos la consulta
+
+        /* ----- MÉTODOS BÁSICOS DE ELOQUENT -----
+            Post::get()
+            Post::find($id); 
+            $post->save(); 
+            $post->delete(); 
+        */
 
         // Retornamos la vista blog junto con la variable 'posts' para esa vista
         return view('blog', ['posts' => $posts]); // [ Crea una clave llamada posts => y guárdale el contenido de la variable $posts ]
